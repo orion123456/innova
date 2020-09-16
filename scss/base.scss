@@ -1,0 +1,249 @@
+//-------------------------------------------- body -----------------------------------------------//
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  background: #151618;
+  min-height: 100%;
+  color: #fff;
+}
+
+//-------------------------------------------- wrapper -----------------------------------------------//
+.wrapper {
+  width: 100%;
+  padding: 50px 20px;
+  max-width: 1600px;
+  display: flex;
+}
+
+//-------------------------------------------- sidebar -----------------------------------------------//
+.sidebar {
+  width: 300px;
+  min-width: 300px;
+  .sidebar__item {
+    margin-top: 30px;
+    padding-left: 10px;
+    &:first-of-type {
+      margin-top: 0;
+    }
+    &.sidebar__item_drop {
+      .sidebar__link {
+        &:after {
+          content: "";
+          width: 10px;
+          height: 10px;
+          border-bottom: 1px solid #fff;
+          border-right: 1px solid #fff;
+          display: inline-block;
+          position: absolute;
+          right: -21px;
+          top: 12px;
+          color: #fff;
+          transform: rotate(-135deg);
+          transition: all 0.3s;
+        }
+        &.sidebar__link_active {
+          & + .dropdown-menu {
+            display: block;
+          }
+          &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -9px;
+            height: 25px;
+            width: 2px;
+            background: red;
+          }
+          &:after {
+            transform: rotate(45deg);
+            top: 5px;
+          }
+        }
+      }
+    }
+    .sidebar__link {
+      font-size: 18px;
+      color: #fff;
+      position: relative;
+    }
+    .dropdown-menu {
+      display: none;
+      .dropdown-menu__item {
+        padding-left: 15px;
+        &.dropdown-menu__item_active {
+          a {
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+          }
+        }
+        a {
+          border-radius: 20px;
+          display: inline-block;
+          padding: 8px 16px;
+          margin-top: 10px;
+          color: grey;
+        }
+      }
+    }
+  }
+}
+
+//-------------------------------------------- main-content -----------------------------------------------//
+.main-content {
+  flex-grow: 1;
+  .main-content__caption {
+    font-size: 25px;
+    line-height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .main-content__menu-icon {
+      width: 30px;
+      height: 30px;
+      background-image: url(../img/open-menu.svg);
+      -webkit-background-size: cover;
+      background-size: cover;
+      cursor: pointer;
+      display: none;
+      transition: all 0.3s;
+      &.active {
+        background-image: url(../img/close.svg);
+      }
+    }
+  }
+  .main-content__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+//-------------------------------------------- card -----------------------------------------------//
+.card {
+  width: 210px;
+  margin-top: 50px;
+  margin-right: 40px;
+  .card__img {
+    height: 270px;
+    border-radius: 10px;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.75);
+    &:hover {
+      .card__hidden-block {
+        opacity: 1;
+      }
+    }
+    .card__hidden-block {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: rgba(0,0,0,0.7);
+      transition: all 0.3s;
+      opacity: 0;
+      .like {
+        position: absolute;
+        z-index: 10;
+        top: 20px;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        background-image: url(../img/heart.svg);
+        cursor: pointer;
+        background-size: cover;
+        &.active {
+          background-image: url(../img/heart-active.svg);
+        }
+      }
+      .close {
+        position: absolute;
+        z-index: 10;
+        top: 20px;
+        right: 20px;
+        width: 15px;
+        height: 15px;
+        background-image: url(../img/close.svg);
+        cursor: pointer;
+        background-size: cover;
+      }
+      .play {
+        width: 80px;
+        height: 80px;
+        background-image: url(../img/play.svg);
+        background-size: cover;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        cursor: pointer;
+        display: inline-block;
+      }
+      .left-rating {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+      }
+      .right-rating {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  }
+  .card_rating {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    .like-block {
+      position: relative;
+      padding-left: 23px;
+      cursor: pointer;
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 17px;
+        height: 17px;
+        background-image: url(../img/like.svg);
+        -webkit-background-size: cover;
+        background-size: cover;
+        position: absolute;
+        top: -1px;
+        left: 0;
+      }
+    }
+    .dislike-block {
+      position: relative;
+      padding-left: 23px;
+      cursor: pointer;
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 17px;
+        height: 17px;
+        background-image: url(../img/dislike.svg);
+        -webkit-background-size: cover;
+        background-size: cover;
+        position: absolute;
+        top: 2px;
+        left: 0;
+      }
+    }
+  }
+  .card_caption {
+    margin-top: 13px;
+    font-size: 18px;
+  }
+  .card_description {
+    margin-top: 10px;
+    opacity: 0.7;
+    font-size: 13px;
+  }
+}
+
+
+

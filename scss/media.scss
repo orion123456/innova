@@ -1,0 +1,31 @@
+//--------------------------------------------------- 992px ------------------------------------------------------//
+@media screen and (max-width: 992px) {
+  .main-content .main-content__caption .main-content__menu-icon {
+    display: inline-block;
+  }
+  .sidebar {
+    position: absolute;
+    top: 0;
+    left: -110%;
+    min-height: 100vh;
+    background: #151618;
+    z-index: 10;
+    padding: 20px 10px;
+    transition: all 0.3s;
+    width: 80%;
+    min-width: auto;
+    &.active {
+      left: 0;
+    }
+  }
+  .wrapper {
+    padding: 20px 15px;
+  }
+  .main-content .main-content__wrapper {
+    justify-content: center;
+  }
+  .card {
+    margin: 30px 20px 0 20px;
+  }
+}
+
